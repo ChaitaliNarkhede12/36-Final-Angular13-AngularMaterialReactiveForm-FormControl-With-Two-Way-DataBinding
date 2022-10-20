@@ -1,0 +1,70 @@
+<form name="employeeForm" class="form-horizontal">
+  <div class="col-md-6">
+    <mat-form-field class="full-width">
+      <mat-label>Name</mat-label>
+      <input matInput [formControl]="nameFormControl" [(ngModel)]="employeeModel.name">
+      <mat-error *ngIf="nameFormControl.hasError('required')">
+        Name is required
+      </mat-error>
+      <mat-error *ngIf="nameFormControl.hasError('maxlength')">
+        Please enter max 5 character only
+      </mat-error>
+    </mat-form-field>
+
+    <br />
+    <br />
+
+    <mat-form-field class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput [formControl]="emailFormControl" [(ngModel)]="employeeModel.email">
+      <mat-error *ngIf="emailFormControl.hasError('required')">
+        Email is required
+      </mat-error>
+      <mat-error *ngIf="emailFormControl.hasError('email')">
+        Please enter correct email
+      </mat-error>
+    </mat-form-field>
+
+    <br />
+    <br />
+
+    <mat-form-field class="full-width">
+      <mat-label>Mobile Number</mat-label>
+      <input matInput [formControl]="mobileNumberFormControl" [(ngModel)]="employeeModel.mobileNumber">
+      <mat-error *ngIf="mobileNumberFormControl.hasError('required')">
+        Mobile number is required
+      </mat-error>
+      <mat-error *ngIf="mobileNumberFormControl.hasError('pattern')">
+        Please enter 10 digit mobile number
+      </mat-error>
+    </mat-form-field>
+
+    <br />
+    <br />
+
+    <mat-form-field class="full-width">
+      <mat-label>Salary</mat-label>
+      <input matInput [formControl]="salaryFormControl" [(ngModel)]="employeeModel.salary">
+      <mat-error *ngIf="salaryFormControl.hasError('required')">
+        Salary is required
+      </mat-error>
+    </mat-form-field>
+
+    <br />
+    <br />
+
+    <mat-form-field class="full-width">
+      <mat-select [formControl]="countryFormControl">
+        <mat-option *ngFor="let item of countryList" [value]="item.id">
+          {{item.name}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="countryFormControl.hasError('required')">
+        country is required
+      </mat-error>
+    </mat-form-field>
+    <br />
+    <br />
+    <button type="submit" (click)="OnSubmit()"></button>
+  </div>
+</form>
